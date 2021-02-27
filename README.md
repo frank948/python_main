@@ -1,0 +1,1 @@
+Main repo for all python practices that are not projects!
