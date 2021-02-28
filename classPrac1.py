@@ -1,6 +1,6 @@
 import turtle
 
-'''
+
 class my_ski_gear:
     def __init__(self, skis, bindings, poles, boots, helmet):
         self.skis = skis
@@ -10,7 +10,7 @@ class my_ski_gear:
         self.helmet = helmet
 
 me = my_ski_gear('line-ninja', 'look-bindings', 'scott', 'dalbelo', 'giro-jackson')
-'''
+
 class Polygon:
     #initialize
     def __init__(self, sides, name, size=100, color='black',line_thickness=3):#method,can set parameters as default
@@ -40,19 +40,20 @@ class Square(Polygon):#subclass of Polygon
         super().draw()
         turtle.end_fill()
 
-square = Square(color='#abc123')#defining a square using subclassing
-print(square.draw())
+#square = Square(color='#abc123')#defining a square using subclassing
+#print(square.draw())
 
-#square = Polygon(4, 'Square', 100)
+square = Polygon(4, 'Square', 100)
 pentagon = Polygon(5, 'Pentagon', 100)
 hexagon = Polygon(5, 'Hexagon',color='red',line_thickness=20)
 
-#print(square.sides, square.name)
+print(square.sides, square.name)
 #print(pentagon.sides, pentagon.name)
 #print(square.interior_angles)#360
 #print(square.angle)#90
 
-#square.draw()
+
+square.draw()
 #pentagon.draw()
 #hexagon.draw()
 turtle.done()
