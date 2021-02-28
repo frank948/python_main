@@ -5,13 +5,12 @@ outcomes = [
     ['Tie', 'You lose:(', 'You win:D'],
     ['You win:D', 'Tie', 'You lose:('],
     ['You lose:(', 'You win:D', 'Tie'],
-    ['Invalid choice']
 ]
-rps = [
-    {0: 'Rock'},
-    {1: 'Paper'},
-    {2: 'Scissors'}
-]
+rps = {
+    'rock': 0,
+    'paper':1,
+    'scissors':2
+}
 
 def main():
 
@@ -33,20 +32,24 @@ def main():
 
     while p_rounds > rounds:
         try:
-            c = random.choice(range(0, 3))
-            p = int(input('Choose 0 for rock, 1 for paper, 2 for scissors'))
-            print('You chose', rps[p][p], ',', 'computer chose', rps[c][c])
-            outcome = outcomes[p][c]
-            print(outcome)
+            c = random.choice(['rock','paper','scissors'])
+            p = input('Make your choice!').lower()
+            print('You chose', p)
+            print('Comp chose', c)
+            choice = rps.get(p, 3)
+            c_choice = rps.get(c)
+            result = outcomes[choice][c_choice]
+            print(result)
             p_rounds -= 1
-            if outcome != 'You lose:(' and outcome != 'Tie':
+            if result != 'You lose:(' and result != 'Tie':
                 p_score += 1
-            elif outcome != 'You win:D' and outcome != 'Tie':
+            elif result != 'You win:D' and result != 'Tie':
                 c_score += 1
-        except ValueError:
-            print(outcomes[3][0], 'please choose an integer to represent your choice')
         except IndexError:
-            print('Please choose 0, 1, or 2')
+            print('Invalid choice, please choose again')
+
+
+
 
         print(p_rounds, 'rounds left, score:', p_score, 'comp score', c_score, '\n')
         if rounds >= p_rounds:
@@ -55,4 +58,5 @@ def main():
             elif c_score > p_score:
                 print('You lost the game:(')
             keep_playing()
+
 main()
